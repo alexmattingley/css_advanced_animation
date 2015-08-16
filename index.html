@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.info_image{
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    position: relative;
+    transition: all .5s ease;
+}
+.text_div{
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    color: white;
+    background-color: rgba(0,0,0,.45);
+    bottom: 0px;
+    transform:translateY(100%);
+    transition: inherit;
+    
+}
+.item_one .img_div{
+    background-image:url(https://alicarnold.files.wordpress.com/2009/11/new-product.jpg);
+    background-color: red;
+}
+.info_image:hover .text_div{
+    transform:translateY(0%);
+}
+.info_image:hover .img_div{
+    -webkit-transform:scale(1.2,1.2) rotate(720deg);
+}
+.img_div{
+    height: 100%;
+    width: 100%;
+    background-size:100%;
+    background-origin:border-box;
+    background-repeat:no-repeat;  
+    transition: inherit;
+}
+    
+</style>
+</head>
+<body>
+<div class="info_image item_one">
+    <div class="img_div"></div>
+    <div class="text_div">More content!</div>
+</div>
+</body>
+</html>
