@@ -12,7 +12,7 @@
 			position: relative;
 			background-color: red;
 			animation-name: spin_line;
-			animation-duration: 4s;
+			animation-duration: 1.891s;
 			-webkit-animation-timing-function: linear;
 			animation-iteration-count: infinite;
 			-webkit-transform-origin: 0% 50%;
@@ -62,6 +62,9 @@
 			border-radius: 100%;
 			position: absolute;
 		}
+		.running{
+			background-color: red;
+		}
 		
 
 	</style>
@@ -74,9 +77,18 @@
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script>
 		var id_index = 0;
-
+		var clone_interval = null;
 		$('button').click(function(){
-			do_stuff();
+			$(this).toggleClass('running');
+			if(clone_interval==null){
+				clone_interval = setInterval(do_stuff,15);
+
+			}
+			else
+			{
+				clearInterval(clone_interval);
+				clone_interval = null;
+			}
 
 		});
 		function do_stuff(){
@@ -92,6 +104,10 @@
 			var clone_circle = $('<div>',{
 				class: 'clone_circle',
 				'id_index': id_index
+			}).mouseover(function(){
+				$(this).animate({'opacity':'0'},100,function(){
+					$(this).remove();
+				});
 			});
 			console.log(click_position.left);
 			$('.circle').css('border', 'solid 3px ' + random_color);
