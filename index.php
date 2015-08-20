@@ -10,7 +10,7 @@
 			width: 50vw;
 			position: relative;
 			background-color: red;
-			animation-name: spin_line;
+			/*animation-name: spin_line;*/
 			animation-duration: 4s;
 			animation-iteration-count: infinite;
 			
@@ -79,9 +79,11 @@
 			var clone_circle = $('<div>',{
 				class: 'clone_circle'
 			});
-			$('clone_circle').css(click_position);
+			console.log(click_position.left);
 			$('.circle').css('border', 'solid 3px ' + random_color);
-			$('.line').append(clone_circle); 
+			$('body').append(clone_circle);
+			$('clone_circle').css('left', click_position.left + 'px');
+			$('clone_circle').css('top' ,click_position.top + 'px'); 
 		});
 	</script>
 </body>
