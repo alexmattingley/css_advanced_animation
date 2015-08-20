@@ -49,6 +49,14 @@
 				left:0;
 			}
 		}
+
+		.clone_circle {
+			height: 15px;
+			width: 15px;
+			border-radius: 100%;
+			position: absolute;
+			border: 3px solid black;
+		}
 		
 
 	</style>
@@ -66,12 +74,14 @@
 			var g = Math.round(Math.random()*(255 - 0));
 			//console.log("rgb(",r,",",b,",",g,")");
 			var random_color = "rgb(" + r + "," + b + "," + g + ")";
-			console.log(random_color);
-			$('.circle').css('border', 'solid 1px ' + random_color);
-			console.log($('.circle').position());
+	
+			var click_position = $('.circle').position();
 			var clone_circle = $('<div>',{
 				class: 'clone_circle'
-			}) 
+			});
+			$('clone_circle').css(click_position);
+			$('.circle').css('border', 'solid 3px ' + random_color);
+			$('.line').append(clone_circle); 
 		});
 	</script>
 </body>
