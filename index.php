@@ -5,14 +5,14 @@
 	<title>CSS advanced animations</title>
 	<style>
 		.line {
-			margin: 50vw 20vw;
+			margin: 20vw;
 			height: 1px;
 			width: 50vw;
 			position: relative;
 			background-color: red;
 			animation-name: spin_line;
 			animation-duration: 4s;
-			/*animation-iteration-count: infinite;*/
+			animation-iteration-count: infinite;
 			
 		}
 
@@ -32,9 +32,10 @@
 			width: 15px;
 			border-radius: 100%;
 			position: absolute;
+			border: 3px solid black;
 			animation-name: circle_move;
 			animation-duration: 3s;
-			/*animation-iteration-count: infinite;*/
+			animation-iteration-count: infinite;
 		}
 
 		@keyframes circle_move{
@@ -66,7 +67,11 @@
 			//console.log("rgb(",r,",",b,",",g,")");
 			var random_color = "rgb(" + r + "," + b + "," + g + ")";
 			console.log(random_color);
-			$('.circle').css('border', 'solid 1px ' + random_color); 
+			$('.circle').css('border', 'solid 1px ' + random_color);
+			console.log($('.circle').position());
+			var clone_circle = $('<div>',{
+				class: 'clone_circle'
+			}) 
 		});
 	</script>
 </body>
