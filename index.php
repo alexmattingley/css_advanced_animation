@@ -5,24 +5,30 @@
 	<title>CSS advanced animations</title>
 	<style>
 		.line {
-			margin: 20vw;
+			top: 50vh;
+			left: 50vw;
 			height: 1px;
-			width: 50vw;
+			width: 40vw;
 			position: relative;
 			background-color: red;
-			/*animation-name: spin_line;*/
+			animation-name: spin_line;
 			animation-duration: 4s;
+			-webkit-animation-timing-function: linear;
 			animation-iteration-count: infinite;
+			-webkit-transform-origin: 0% 50%;
+			transform-origin: 0% 50%;
 			
 		}
 
 		@keyframes spin_line {
 			from {
-				transform:rotateZ(0deg);
+				transform:rotate(0deg);
 				-webkit-transform: rotateZ(0deg);
+
+
 			}
 			to {
-				transform:rotateZ(360deg);
+				transform:rotate(360deg);
 				-webkit-transform: rotateZ(360deg);
 			}
 		}
@@ -34,7 +40,7 @@
 			position: absolute;
 			border: 3px solid black;
 			animation-name: circle_move;
-			animation-duration: 3s;
+			animation-duration: 2s;
 			animation-iteration-count: infinite;
 		}
 
@@ -55,7 +61,6 @@
 			width: 15px;
 			border-radius: 100%;
 			position: absolute;
-			border: 3px solid black;
 		}
 		
 
@@ -68,23 +73,33 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script>
+		var id_index = 0;
+
 		$('button').click(function(){
+			do_stuff();
+
+		});
+		function do_stuff(){
+			id_index++;
+			console.log(id_index);
 			var r = Math.round(Math.random()*(255 - 0));
 			var b = Math.round(Math.random()*(255 - 0));
 			var g = Math.round(Math.random()*(255 - 0));
 			//console.log("rgb(",r,",",b,",",g,")");
 			var random_color = "rgb(" + r + "," + b + "," + g + ")";
 	
-			var click_position = $('.circle').position();
+			var click_position = $('.circle').offset();
 			var clone_circle = $('<div>',{
-				class: 'clone_circle'
+				class: 'clone_circle',
+				'id_index': id_index
 			});
 			console.log(click_position.left);
 			$('.circle').css('border', 'solid 3px ' + random_color);
 			$('body').append(clone_circle);
-			$('clone_circle').css('left', click_position.left + 'px');
-			$('clone_circle').css('top' ,click_position.top + 'px'); 
-		});
+			$("div[id_index='"+ id_index + "']").css('left', click_position.left + 'px');
+			$("div[id_index='"+ id_index + "']").css('top' ,click_position.top + 'px');
+			$("div[id_index='"+ id_index + "']").css('border', 'solid 3px ' + random_color);			
+		}
 	</script>
 </body>
 </html>
